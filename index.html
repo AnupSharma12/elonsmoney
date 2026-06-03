@@ -15,6 +15,34 @@
         h1 {
             color: #e12d39;
         }
+        .item {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px auto;
+            max-width: 500px;
+            text-align: left;
+        }
+        .item h3 {
+            color: #e12d39;
+            margin-top: 0;
+        }
+        .price {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #28a745;
+        }
+        .controls {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        .controls button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            font-size: 1em;
+        }
     </style>
 </head>
 <body>
@@ -26,7 +54,61 @@
     </div>
 
     <div id="items">
-        <!-- Items will be added here -->
+        <div class="item">
+            <h3>Tesla Model S</h3>
+            <p class="price">$94,990</p>
+            <div class="controls">
+                <button class="decrement">-</button>
+                <span class="quantity">1</span>
+                <button class="increment">+</button>
+                <button class="buy">Buy</button>
+                <button class="sell">Sell</button>
+            </div>
+        </div>
+        <div class="item">
+            <h3>Twitter (X)</h3>
+            <p class="price">$44,000,000,000</p>
+            <div class="controls">
+                <button class="decrement">-</button>
+                <span class="quantity">1</span>
+                <button class="increment">+</button>
+                <button class="buy">Buy</button>
+                <button class="sell">Sell</button>
+            </div>
+        </div>
+        <div class="item">
+            <h3>SpaceX Rocket Launch</h3>
+            <p class="price">$67,000,000</p>
+            <div class="controls">
+                <button class="decrement">-</button>
+                <span class="quantity">1</span>
+                <button class="increment">+</button>
+                <button class="buy">Buy</button>
+                <button class="sell">Sell</button>
+            </div>
+        </div>
+        <div class="item">
+            <h3>Tesla Cybertruck</h3>
+            <p class="price">$39,990</p>
+            <div class="controls">
+                <button class="decrement">-</button>
+                <span class="quantity">1</span>
+                <button class="increment">+</button>
+                <button class="buy">Buy</button>
+                <button class="sell">Sell</button>
+            </div>
+        </div>
+        <div class="item">
+            <h3>Neuralink Implant</h3>
+            <p class="price">$10,000</p>
+            <div class="controls">
+                <button class="decrement">-</button>
+                <span class="quantity">1</span>
+                <button class="increment">+</button>
+                <button class="buy">Buy</button>
+                <button class="sell">Sell</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>
