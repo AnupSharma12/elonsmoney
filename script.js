@@ -12,8 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.item').forEach(item => {
         const price = parseCurrency(item.querySelector('.price').textContent);
         const buyBtn = item.querySelector('.buy');
+        const sellBtn = item.querySelector('.sell');
         buyBtn.addEventListener('click', () => {
             updateBalance(price);
+        });
+        // Increase balance when selling (add back the price)
+        sellBtn.addEventListener('click', () => {
+            const current = parseCurrency(balanceEl.textContent);
+            const newBalance = current + price;
+            balanceEl.textContent = formatCurrency(newBalance);
         });
     });
 });
