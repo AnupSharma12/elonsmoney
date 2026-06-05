@@ -62,7 +62,16 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 8px;
     margin-top: 10px;
+}
+
+.quantity {
+    width: 64px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
+    text-align: center;
 }
 
 .controls button {
@@ -77,6 +86,13 @@ h1 {
     background: #ccc;
 }
 
+.controls button:disabled,
+.controls button:disabled:hover {
+    background: #bdbdbd;
+    color: #666;
+    cursor: not-allowed;
+}
+
 .controls .buy {
     background: #28a745;
     color: #fff;
@@ -85,6 +101,14 @@ h1 {
 .controls .sell {
     background: #dc3545;
     color: #fff;
+}
+
+.controls .buy:disabled,
+.controls .buy:disabled:hover,
+.controls .sell:disabled,
+.controls .sell:disabled:hover {
+    background: #bdbdbd;
+    color: #666;
 }
 
 #balance {
