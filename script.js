@@ -19,9 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const maxQuantity = item.quantity + Math.floor(balance / item.price);
 
             item.buyBtn.disabled = !canBuy;
-            item.incrementBtn.disabled = !canBuy;
             item.sellBtn.disabled = !canSell;
-            item.decrementBtn.disabled = !canSell;
             item.quantityEl.max = maxQuantity;
         });
     };
@@ -29,16 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.item').forEach(item => {
         const price = parseCurrency(item.querySelector('.price').textContent);
         const quantityEl = item.querySelector('.quantity');
-        const decrementBtn = item.querySelector('.decrement');
-        const incrementBtn = item.querySelector('.increment');
         const buyBtn = item.querySelector('.buy');
         const sellBtn = item.querySelector('.sell');
         const itemState = {
             price,
             quantity: 0,
             quantityEl,
-            decrementBtn,
-            incrementBtn,
             buyBtn,
             sellBtn
         };
@@ -97,9 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         items.push(itemState);
 
         buyBtn.addEventListener('click', buyOne);
-        incrementBtn.addEventListener('click', buyOne);
         sellBtn.addEventListener('click', sellOne);
-        decrementBtn.addEventListener('click', sellOne);
         quantityEl.addEventListener('change', setTypedQuantity);
         quantityEl.addEventListener('keydown', event => {
             if (event.key === 'Enter') {
