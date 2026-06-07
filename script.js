@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const balance = getBalance();
 
         items.forEach(item => {
-            const canBuy = balance >= item.price;
+            const canBuy = balance >= item.price && (!item.isOnce || item.quantity === 0);
             const canSell = item.quantity > 0;
-            const maxQuantity = item.quantity + Math.floor(balance / item.price);
+            const maxQuantity = item.isOnce ? 1 : item.quantity + Math.floor(balance / item.price);
 
             item.buyBtn.disabled = !canBuy;
             item.sellBtn.disabled = !canSell;
@@ -29,12 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const quantityEl = item.querySelector('.quantity');
         const buyBtn = item.querySelector('.buy');
         const sellBtn = item.querySelector('.sell');
+        const isOnce = item.hasAttribute('data-once');
         const itemState = {
             price,
             quantity: 0,
             quantityEl,
             buyBtn,
-            sellBtn
+            sellBtn,
+            isOnce
         };
 
         const setQuantity = (quantity) => {
@@ -45,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const buyOne = () => {
             const balance = getBalance();
 
-            if (balance < price) {
+            if (balance < price || (itemState.isOnce && itemState.quantity > 0)) {
                 return;
             }
 
@@ -71,7 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (quantityDifference > 0) {
                 const balance = getBalance();
                 const affordableQuantity = Math.floor(balance / price);
-                const quantityToBuy = Math.min(quantityDifference, affordableQuantity);
+                let quantityToBuy = Math.min(quantityDifference, affordableQuantity);
+                if (itemState.isOnce && quantityToBuy > 1) quantityToBuy = 1;
 
                 setQuantity(itemState.quantity + quantityToBuy);
                 setBalance(balance - (quantityToBuy * price));
