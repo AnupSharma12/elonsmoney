@@ -3,11 +3,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const parseCurrency = (str) => Number(str.replace(/[^0-9.-]+/g, ''));
     const formatCurrency = (num) => '$' + num.toLocaleString('en-US');
     const items = [];
+    const TOTAL_MONEY = 830000000000;
 
     const getBalance = () => parseCurrency(balanceEl.textContent);
 
     const setBalance = (amount) => {
         balanceEl.textContent = formatCurrency(amount);
+    };
+
+    const updateReceipt = () => {
+        const receiptItemsEl = document.getElementById('receipt-items');
+        const receiptTotalEl = document.getElementById('receipt-total');
+        const receiptBillionEl = document.getElementById('receipt-billion');
+        const receiptPercentEl = document.getElementById('receipt-percent');
+        // Target your date element
+        const receiptDateEl = document.getElementById('receipt-date'); 
+
+        // 1. Automatically update today's date on the receipt
+        if (receiptDateEl) {
+            receiptDateEl.innerText = new Date().toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+        }
+
+        const purchasedItems = items.filter(item => item.quantity > 0);
+        let totalSpent = 0;
+
+        receiptItemsEl.innerHTML = purchasedItems.map(item => {
+            const itemTotal = item.price * item.quantity;
+            totalSpent += itemTotal;
+            return `<p>${item.name} x <strong>${item.quantity}</strong> ${formatCurrency(itemTotal)}</p>`;
+        }).join('');
+
+        const totalFormatted = formatCurrency(totalSpent);
+        const billionValue = (totalSpent / 1000000000).toFixed(1);
+        const percentSpent = ((totalSpent / TOTAL_MONEY) * 100).toFixed(6);
+
+        receiptTotalEl.textContent = `Total: ${totalFormatted}`;
+        receiptBillionEl.textContent = `(${billionValue} billion USD)`;
+        receiptPercentEl.textContent = `You only spent ${percentSpent}% of the total`;
     };
 
     const updateButtons = () => {
@@ -22,6 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
             item.sellBtn.disabled = !canSell;
             item.quantityEl.max = maxQuantity;
         });
+
+        updateReceipt();
     };
 
     document.querySelectorAll('.item').forEach(item => {
@@ -30,7 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const buyBtn = item.querySelector('.buy');
         const sellBtn = item.querySelector('.sell');
         const isOnce = item.hasAttribute('data-once');
+        const name = item.querySelector('h3').textContent;
         const itemState = {
+            name,
             price,
             quantity: 0,
             quantityEl,

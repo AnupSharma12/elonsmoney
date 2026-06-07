@@ -164,3 +164,70 @@ center {
     color: #ffd700;
     font-weight: bold;
 }
+
+/* Receipt styles */
+#receipt {
+    background: #fff;
+    border: 2px solid #333;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 24px;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+#receipt h2 {
+    text-align: center;
+    margin: 0 0 8px 0;
+    font-size: 1.8em;
+    color: #333;
+}
+
+#receipt-date {
+    text-align: center;
+    margin: 0 0 12px 0;
+    color: #666;
+    font-size: 0.95em;
+}
+
+#receipt hr {
+    border: none;
+    border-top: 2px dashed #333;
+    margin: 12px 0;
+}
+
+#receipt-items p {
+    margin: 6px 0;
+    font-size: 0.95em;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px;
+}
+
+#receipt-items p strong {
+    color: #e12d39;
+}
+
+#receipt-total {
+    text-align: right;
+    font-weight: bold;
+    font-size: 1.1em;
+    margin: 12px 0 4px 0;
+}
+
+#receipt-billion {
+    text-align: right;
+    color: #666;
+    margin: 4px 0;
+    font-size: 0.9em;
+}
+
+#receipt-percent {
+    text-align: center;
+    margin: 12px 0 0 0;
+    font-weight: bold;
+    color: #28a745;
+    font-size: 1em;
+}
