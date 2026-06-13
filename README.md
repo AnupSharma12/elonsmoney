@@ -1,10 +1,10 @@
 # Spend Elon Musk's Money
 
-A web app where you can spend Elon Musks fortune of $830 billion. You can buy anything from a $1 candy bar to a $44 billion Twitter deal. As you spend you will see your balance go down in time. It will also show you how much of his wealth you actually spent.
+A web app where you can spend Elon Musks fortune of $830 billion.
 
 ## Try It Live
 
-**[Open the app](https://anupsharma12.github.io/elonsmoney)** — or clone the repo and open `index.html` in any browser. No setup required.
+**[Open the app](https://anupsharma12.github.io/elonsmoney)**
 
 ## Quick Start
 
@@ -18,13 +18,13 @@ That's it. Plain HTML, CSS, and JavaScript. No bundler, no dependencies.
 
 ## Features
 
-- **$830 Billion to Spend**. Elon has this money you can use it all
-- **40+ Items**. You can buy, than 40 things from candy for $1 to a cruise ship for $930 million
-- **Live Balance**. Your balance updates as you make buys and sells
-- **Smart Controls**. You can't buy things you can't afford; you can sell items to get some money back
-- **Itemized Receipt**. You can see what you bought how much you spent and what part of Elons fortune you used
-- **Sticky Balance Bar**. You can see your balance as you scroll through things
-- **Responsive Grid**. This works on any size screen
+- You get 830 billion dollars of elons money to spend
+- Theres like 40 things to buy, from candy for $1 to a big cruise ship for $930 million
+- Your money goes up or down right away when you buy or sell stuff
+- You cant buy things if you dont have enough money but you can sell stuff to get money back
+- It shows you a list at the end of everything you bought and how much of elons money you used
+- The money bar stays at the top so you always know how much you have left
+- It works on any phone or computer screen
   
 ## How to Run
 
@@ -36,9 +36,7 @@ No server needed. Nothing to install. Works offline.
 
 ## How It Works
 
-I am using pure vanilla JavaScript for this. There are no frameworks involved. All of my item data is stored in a file called `script.js`. When the application loads it reads the item cards that're in the web page builds a list of them and adds buttons to buy and sell the items. Every time I make a purchase the balance and the number of items I have are updated away.
-
-The receipt is made when the system looks for items that you have than zero of. The percentage is figured out by taking what you spent in total and dividing that by eight hundred thirty billion dollars. This means the percentage is really, about how much you spent compared to eight hundred thirty billion dollars.
+It's all just plain JavaScript, no fancy frameworks or anything. All the item info lives in `script.js`, and when the page loads it grabs the item cards, builds a list out of them, and slaps buy and sell buttons on each one. Every time you buy something it updates your balance and how many you've got. The receipt just checks which items you have more than zero of, and the percentage is basically how much you spent out of 830 billion dollars total.
 
 The whole app is under 100KB.
 
